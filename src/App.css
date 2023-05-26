@@ -1,0 +1,69 @@
+@import url("https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+body {
+  background-color: #101010;
+  color: #fff;
+  font-size: 44px;
+  font-family: "Share Tech Mono", monospace;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.wrapper .break-session-length {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.wrapper .break-session-length .length {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.wrapper .break-session-length .length .operations {
+  width: 140px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .timer-wrapper {
+  margin-top: 80px;
+  text-align: center;
+  padding: 0px 40px 40px 40px;
+  border: 4px solid green;
+  border-radius: 20px;
+}
+
+.wrapper .timer-wrapper .controle {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.wrapper .timer-wrapper .controle button {
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.length button {
+  color: green;
+  font-size: 40px;
+}
