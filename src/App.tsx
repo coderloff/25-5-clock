@@ -12,15 +12,12 @@ const App = () => {
   const timeoutRef = useRef(0); // Add this useRef declaration
 
   useEffect(() => {
-    if (play) {
-      resetTimer();
-    }
     timeoutRef.current = setTimeout(() => {
       if (timeLeft > 0 && play) {
         setTimeLeft((prevTime) => prevTime - 1);
       }
       if (timeLeft === 0) {
-        // Handle when the timer reaches 0
+        resetTimer();
       }
     }, 1000);
 
