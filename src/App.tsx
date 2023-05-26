@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 const App = () => {
@@ -9,11 +9,25 @@ const App = () => {
 
   const [play, setPlay] = useState(false);
 
-  const timeout = setTimeout(() => {
-    if (timeLeft && play) {
-      setTimeLeft(timeLeft - 1);
+  const timeoutRef = useRef(0); // Add this useRef declaration
+
+  useEffect(() => {
+    if (play) {
+      resetTimer();
     }
-  }, 1000);
+    timeoutRef.current = setTimeout(() => {
+      if (timeLeft > 0 && play) {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }
+      if (timeLeft === 0) {
+        // Handle when the timer reaches 0
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
+  }, [timeLeft, play]);
 
   const handleBreakIncrease = () => {
     if (breakLength < 60) {
@@ -42,19 +56,25 @@ const App = () => {
   };
 
   const handleReset = () => {
-    clearTimeout(timeout);
+    clearTimeout(timeoutRef.current);
     setPlay(false);
+    const playButton = document
+      .getElementById("start_stop")
+      ?.querySelector("i");
+    playButton?.classList.remove("fa-pause");
+    playButton?.classList.add("fa-play");
+    console.log(play);
+    const audio = document.getElementById("beep") as HTMLAudioElement;
+    audio.pause();
+    audio.currentTime = 0;
     setTimeLeft(1500);
     setBreakLength(5);
     setSessionLength(25);
     setTimingtype("SESSION");
-    const audio = document.getElementById("beep") as HTMLAudioElement;
-    audio.pause();
-    audio.currentTime = 0;
   };
 
   const handlePlay = () => {
-    clearTimeout(timeout);
+    clearTimeout(timeoutRef.current);
     setPlay(!play);
     const playButton = document
       .getElementById("start_stop")
@@ -82,19 +102,6 @@ const App = () => {
       audio.currentTime = 0;
     }
   };
-
-  const clock = () => {
-    if (play) {
-      timeout;
-      resetTimer();
-    } else {
-      clearTimeout(timeout);
-    }
-  };
-
-  useEffect(() => {
-    clock();
-  }, [play, timeLeft, timeout]);
 
   const timeFormatter = () => {
     const minutes = Math.floor(timeLeft / 60);
