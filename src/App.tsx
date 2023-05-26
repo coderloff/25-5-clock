@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
+import Length from "./components/Length";
+import Timer from "./components/Timer";
 
 const App = () => {
   const [breakLength, setBreakLength] = useState(5);
@@ -9,7 +11,7 @@ const App = () => {
 
   const [play, setPlay] = useState(false);
 
-  const timeoutRef = useRef(0); // Add this useRef declaration
+  const timeoutRef = useRef(0);
 
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
@@ -115,71 +117,34 @@ const App = () => {
       <div className="wrapper">
         <h2>25 + 5 Clock</h2>
         <div className="break-session-length">
-          <div className="length">
-            <h3 id="break-label">Break Length</h3>
-            <div className="operations">
-              <button
-                disabled={play}
-                onClick={handleBreakIncrease}
-                id="break-increment"
-              >
-                <i className="fa-solid fa-arrow-up"></i>
-              </button>
-              <strong id="break-length">{breakLength}</strong>
-              <button
-                disabled={play}
-                onClick={handleBreakDecrease}
-                id="break-decrement"
-              >
-                <i className="fa-solid fa-arrow-down"></i>
-              </button>
-            </div>
-          </div>
-          <div className="length">
-            <h3 id="session-label">Session Length</h3>
-            <div className="operations">
-              <button
-                disabled={play}
-                onClick={handleSessionIncrease}
-                id="session-increment"
-              >
-                <i className="fa-solid fa-arrow-up"></i>
-              </button>
-              <strong id="session-length">{sessionLength}</strong>
-              <button
-                disabled={play}
-                onClick={handleSessionDecrease}
-                id="session-decrement"
-              >
-                <i className="fa-solid fa-arrow-down  "></i>
-              </button>
-            </div>
-          </div>
+          <Length
+            title="break"
+            play={play}
+            length={breakLength}
+            handleIncrease={handleBreakIncrease}
+            handleDecrease={handleBreakDecrease}
+          />
+          <Length
+            title="session"
+            play={play}
+            length={sessionLength}
+            handleIncrease={handleSessionIncrease}
+            handleDecrease={handleSessionDecrease}
+          />
         </div>
-        <div className="timer-wrapper">
-          <div className="timer">
-            <h2 id="timer-label">{title}</h2>
-            <h3 id="time-left">{timeFormatter()}</h3>
-          </div>
-          <div className="controle">
-            <button
-              onClick={handlePlay}
-              className="btn-operation"
-              id="start_stop"
-            >
-              <i className="fa-solid fa-play"></i>
-            </button>
-            <button onClick={handleReset} className="btn-operation" id="reset">
-              <i className="fa-solid fa-arrows-rotate"></i>
-            </button>
-          </div>
-        </div>
+        <Timer
+          title={title}
+          timeFormatter={timeFormatter}
+          handlePlay={handlePlay}
+          handleReset={handleReset}
+        />
       </div>
       <audio
         id="beep"
         preload="auto"
         src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
       />
+      <div className="attribute"><h6>by Coderloff</h6></div>
     </div>
   );
 };
