@@ -1,10 +1,25 @@
 @import url("https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css");
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
 body {
   background-color: #101010;
   color: #fff;
   font-size: 44px;
   font-family: "Share Tech Mono", monospace;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: green;
+}
+
+button {
+  border: none;
+  outline: none;
+  background: none;
 }
 
 .wrapper {
@@ -31,6 +46,12 @@ body {
   text-align: center;
 }
 
+.wrapper .break-session-length .length button {
+  color: green;
+  font-size: 40px;
+  cursor: pointer;
+}
+
 .wrapper .break-session-length .length .operations {
   width: 140px;
   display: flex;
@@ -55,15 +76,4 @@ body {
   color: #fff;
   font-size: 30px;
   cursor: pointer;
-}
-
-button {
-  border: none;
-  outline: none;
-  background: none;
-}
-
-.length button {
-  color: green;
-  font-size: 40px;
 }
