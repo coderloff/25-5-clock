@@ -116,7 +116,7 @@ const App = () => {
     <div>
       <div className="wrapper">
         <h2>25 + 5 Clock</h2>
-        <div className="break-session-length">
+        <div className="container">
           <Length
             title="break"
             play={play}
@@ -124,6 +124,12 @@ const App = () => {
             handleIncrease={handleBreakIncrease}
             handleDecrease={handleBreakDecrease}
           />
+            <Timer
+              title={title}
+              timeFormatter={timeFormatter}
+              handlePlay={handlePlay}
+              handleReset={handleReset}
+            />
           <Length
             title="session"
             play={play}
@@ -132,12 +138,6 @@ const App = () => {
             handleDecrease={handleSessionDecrease}
           />
         </div>
-        <Timer
-          title={title}
-          timeFormatter={timeFormatter}
-          handlePlay={handlePlay}
-          handleReset={handleReset}
-        />
       </div>
       <audio
         id="beep"

@@ -1,6 +1,12 @@
 @import url("https://site-assets.fontawesome.com/releases/v6.4.0/css/all.css");
 @import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #101010;
   color: #fff;
@@ -29,37 +35,46 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
-.wrapper .break-session-length {
+.wrapper h2{
+  margin: 40px 0;
+}
+
+.wrapper .container {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-around;
 }
 
-.wrapper .break-session-length .length {
+.wrapper .container .length {
+  max-width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   text-align: center;
 }
+.wrapper .container .length h3{
+  margin: 0;
+}
 
-.wrapper .break-session-length .length button {
+.wrapper .container .length .operations {
+  width: 140px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .container .length button {
   color: green;
   font-size: 40px;
   cursor: pointer;
 }
 
-.wrapper .break-session-length .length .operations {
-  width: 140px;
-  display: flex;
-  justify-content: space-between;
-}
-
 .wrapper .timer-wrapper {
-  margin-top: 80px;
   text-align: center;
   padding: 0px 40px 40px 40px;
   border: 4px solid green;
@@ -67,6 +82,7 @@ button {
 }
 
 .wrapper .timer-wrapper .controle {
+  margin-top: 60px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -78,6 +94,6 @@ button {
   cursor: pointer;
 }
 
-.attribute{
-    text-align: center;
+.attribute {
+  text-align: center;
 }
